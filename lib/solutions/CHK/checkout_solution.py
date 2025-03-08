@@ -26,6 +26,7 @@ def checkout(skus):
             if s_free in frequency_map:
                 frequency_map[s_free] = max(0, frequency_map[s_free] - math.floor(count / qty))
 
+
         if s in offers:
             for offer_quantity, offer_price in offers[s]:
                 total += math.floor(count / offer_quantity) * offer_price
@@ -43,6 +44,7 @@ print(checkout("EE"))
 print(checkout("ABCDE"))
 print(checkout("AAAA"))
 print(checkout("AAAABBB"))
+
 
 
 
