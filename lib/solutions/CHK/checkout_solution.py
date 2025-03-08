@@ -44,10 +44,3 @@ print(checkout("EE"))
 print(checkout("ABCDE"))
 print(checkout("AAAA"))
 print(checkout("AAAABBB"))
-
-
-
-
-
-
-
