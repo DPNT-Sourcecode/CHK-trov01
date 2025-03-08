@@ -4,9 +4,9 @@ import math
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15}
+    prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
     offers = {'A': [(5, 200), (3, 130)], 'B': [(2, 45)]}
-    valid_inputs = ('A', 'B', 'C', 'D')
+    valid_inputs = ('A', 'B', 'C', 'D', 'E')
     multiple_offers = {'E': ('B', 2)}
     frequency_map = {}
     for s in skus:
@@ -24,7 +24,7 @@ def checkout(skus):
         if s in multiple_offers:
             s_free, qty = multiple_offers[s]
             if s_free in frequency_map:
-                frequency_map[s_free] = math.max(0, frequency_map[s_free] - math.floor(count / qty))
+                frequency_map[s_free] = max(0, frequency_map[s_free] - math.floor(count / qty))
 
         if s in offers:
             for offer_quantity, offer_price in offers[s]:
@@ -33,14 +33,16 @@ def checkout(skus):
             frequency_map[s] = count
 
     total += sum(frequency_map[s] * prices[s] for s in frequency_map)
+    return total
 
 
-print(checkout("AAc"))
-print(checkout("AAAB"))
-print(checkout("ABBBBBBAB"))
-print(checkout("AABCD"))
-print(checkout("ABCD"))
+print(checkout("EEB"))
+print(checkout("EEBB"))
+print(checkout("AAAAA"))
+print(checkout("EE"))
+print(checkout("ABCDE"))
 print(checkout("AAAA"))
 print(checkout("AAAABBB"))
+
 
 
