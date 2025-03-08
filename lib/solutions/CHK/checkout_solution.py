@@ -5,7 +5,7 @@ import math
 # skus = unicode string
 def checkout(skus):
     prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15}
-    offers = {'A': [(5, 200), (3, 130)], 'B': (2, 45)}
+    offers = {'A': [(5, 200), (3, 130)], 'B': [(2, 45)]}
     valid_inputs = ('A', 'B', 'C', 'D')
     multiple_offers = {'E': ('B', 2)}
     frequency_map = {}
@@ -19,19 +19,27 @@ def checkout(skus):
 
     sum = 0
 
-    for s, count in frequency_map.items():
-        if s not in multiple_offers and s not  in offers:
-            sum += count * prices[s]
+    for s in frequency_map:
+        count = frequency_map[s]
+        if s in multiple_offers:
+            s_free, qty = multiple_offers[s]
+            if s_free in frequency_map:
+                frequency_map[s_free] = math.max(0, frequency_map[s_free] - math.floor(count / qty))
 
-            else:
-                sum += math.floor(count / offers[s][0]) * offers[s][1]
-                sum += (count % offers[s][0]) * prices[s]
-    return sum
+        if s in offers:
+            for offer_quantity, offer_price in offers[s]:
+                sum += math.floor(count / offer_quantity) * offer_price
+                count = count % offer_quantity
+            frequency_map[s] = count
 
-# print(checkout("AAc"))
-# print(checkout("AAAB"))
-# print(checkout("ABBBBBBAB"))
-# print(checkout("AABCD"))
-# print(checkout("ABCD"))
-# print(checkout("AAAA"))
-# print(checkout("AAAABBB"))
+    sum += sum(frequency_map[s] * prices[s] for s in frequency_map)
+
+
+print(checkout("AAc"))
+print(checkout("AAAB"))
+print(checkout("ABBBBBBAB"))
+print(checkout("AABCD"))
+print(checkout("ABCD"))
+print(checkout("AAAA"))
+print(checkout("AAAABBB"))
+
