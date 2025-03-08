@@ -35,14 +35,15 @@ def checkout(skus):
     total += sum(frequency_map[s] * prices[s] for s in frequency_map)
     return total
 
-#
-# print(checkout("E"))
-# print(checkout("EEBB"))
-# print(checkout("AAAAA"))
-# print(checkout("EE"))
-# print(checkout("ABCDE"))
-# print(checkout("AAAA"))
-# print(checkout("AAAABBB"))
+
+print(checkout("BEBEEE"))
+print(checkout("ABCDEABCDE"))
+print(checkout("AAAAA"))
+print(checkout("EE"))
+print(checkout("ABCDE"))
+print(checkout("AAAA"))
+print(checkout("AAAABBB"))
+
 
 
 
