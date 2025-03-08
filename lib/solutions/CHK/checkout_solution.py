@@ -22,13 +22,16 @@ def checkout(skus):
             sum += count * prices[s]
         else:
             sum += math.floor(count/offers[s][0])*offers[s][1]
-            sum += (count % offers[s][1]) * prices[s]
+            sum += (count % offers[s][0]) * prices[s]
     return sum
 
-print(checkout("AAc"))
-print(checkout("AAAB"))
-print(checkout("ABBBBBBAB"))
-print(checkout("AABCD"))
-print(checkout("AAAA"))
+# print(checkout("AAc"))
+# print(checkout("AAAB"))
+# print(checkout("ABBBBBBAB"))
+# print(checkout("AABCD"))
+# print(checkout("ABCD"))
+# print(checkout("AAAA"))
+# print(checkout("AAAABBB"))
+
 
 
