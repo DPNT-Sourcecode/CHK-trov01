@@ -17,7 +17,7 @@ def checkout(skus):
         else:
             frequency_map[s] = 1
 
-    sum = 0
+    total = 0
 
     for s in frequency_map:
         count = frequency_map[s]
@@ -28,11 +28,11 @@ def checkout(skus):
 
         if s in offers:
             for offer_quantity, offer_price in offers[s]:
-                sum += math.floor(count / offer_quantity) * offer_price
+                total += math.floor(count / offer_quantity) * offer_price
                 count = count % offer_quantity
             frequency_map[s] = count
 
-    sum += sum(frequency_map[s] * prices[s] for s in frequency_map)
+    total += sum(frequency_map[s] * prices[s] for s in frequency_map)
 
 
 print(checkout("AAc"))
@@ -42,4 +42,5 @@ print(checkout("AABCD"))
 print(checkout("ABCD"))
 print(checkout("AAAA"))
 print(checkout("AAAABBB"))
+
 
