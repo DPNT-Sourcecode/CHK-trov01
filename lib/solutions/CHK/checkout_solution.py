@@ -32,6 +32,3 @@ def checkout(skus):
 # print(checkout("ABCD"))
 # print(checkout("AAAA"))
 # print(checkout("AAAABBB"))
-
-
-
