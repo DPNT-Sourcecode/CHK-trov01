@@ -36,13 +36,14 @@ def checkout(skus):
     return total
 
 
-print(checkout("EEB"))
-print(checkout("EEBB"))
-print(checkout("AAAAA"))
-print(checkout("EE"))
-print(checkout("ABCDE"))
-print(checkout("AAAA"))
-print(checkout("AAAABBB"))
+# print(checkout("EEB"))
+# print(checkout("EEBB"))
+# print(checkout("AAAAA"))
+# print(checkout("EE"))
+# print(checkout("ABCDE"))
+# print(checkout("AAAA"))
+# print(checkout("AAAABBB"))
+
 
 
 
